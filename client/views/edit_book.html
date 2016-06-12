@@ -1,0 +1,74 @@
+
+<a href="#/books">Go Back</a>
+
+
+<div class="panel panel-default" >
+  <div class="panel-heading">
+    <h3 class="panel-title">Edit Book</h3>
+  </div>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-12">
+          <form ng-submit="updateBook()" ng-init="getBook()">
+          <div class="form-group">
+              <label >Title</label>
+              <input type="text" class="form-control" ng-model="book.title" placeholder="Enter title">
+              <small class="text-muted">We'll never share your email with anyone else.</small>
+          </div>
+
+
+
+
+            <div class="form-group">
+                <label >Genre</label>
+                    <select name="genre" class="form-control" ng-model="book.genre">
+                      <option value="Suspense">Suspense</option>
+                      <option value="Diet">飲食札記</option>
+                      <option value="Translation">翻譯文學</option>
+                      <option value="Teaching">教學法</option>
+                     <option value="Coffee">咖啡</option>
+                    </select>
+            </div>
+
+
+            <div class="form-group">
+                <label >Author</label>
+                <input type="text" class="form-control" ng-model="book.author" placeholder="Enter Author">
+                <small class="text-muted">We'll never share your email with anyone else.</small>
+            </div>
+
+
+              <div class="form-group">
+                  <label >Publisher</label>
+                  <input type="text" class="form-control"  ng-model="book.publisher" placeholder="Enter Publisher">
+              </div>
+
+              <div class="form-group">
+                  <label >Pages</label>
+                  <input type="text" class="form-control" ng-model="book.pages" placeholder="Enter Pages">
+              </div>
+
+              <div class="form-group">
+                  <label >Description</label>
+                  <textarea class="form-control" ng-model="book.description" placeholder="Enter Description"></textarea>
+              </div>
+
+              <div class="form-group">
+                  <label >Image URL</label>
+                  <input type="text" class="form-control" ng-model="book.image_url" placeholder="Enter Image URL">
+              </div>
+
+              <div class="form-group">
+                  <label >Buy URL</label>
+                  <input type="text" class="form-control" ng-model="book.buy_url" placeholder="Enter Buy URL">
+              </div>
+
+
+          <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+
+    </div>
+
+  </div>
+</div>

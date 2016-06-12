@@ -4,17 +4,24 @@
   </div>
   <div class="panel-body">
      <div class="row">
+
        <div ng-repeat="book in books">
-         <div class="col-md-3">
+      
+
+         <div class="col-md-6">
              <div col-md-6>
-               {{book.title}}
+               <h3>{{book.title}}</h3>
                <p>{{book.description}}</p>
+               <a class="btn btn-primary" href="#/books/details/{{book._id}}">View detail</a>
              </div>
              <div col-md-6>
-                <img src="{{book.image_url}}" alt="">
+                <img class="thumbnail"src="{{book.image_url}}" alt="">
              </div>
          </div>
+
+
        </div>
+
      </div>
   </div>
 </div>
