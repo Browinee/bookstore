@@ -9,62 +9,88 @@
   <div class="panel-body">
     <div class="row">
       <div class="col-md-12">
-          <form ng-submit="addBook()">
-          <div class="form-group">
+          <form name="addBookForm" ng-submit="addBook()" nonvalidate>
+          <div class="form-group"  ng-class="{'has-error': addBookForm.bookName.$touched && addBookForm.bookName.$invalid, 'has-success': addBookForm.bookName.$touched && addBookForm.bookName.$valid }">
               <label >Title</label>
-              <input type="text" class="form-control" ng-model="book.title" placeholder="Enter title">
-              <small class="text-muted">We'll never share your email with anyone else.</small>
+              <input type="text" class="form-control" ng-model="book.title" placeholder="Enter title" name="bookName"  ng-minlength="0" required>
+              <div ng-messages = "addBookForm.bookName.$error " ng-show="addBookForm.bookName.$dirty">
+                   <p ng-message="required">請輸入Title</p>
+
+              </div>
           </div>
 
 
 
 
-            <div class="form-group">
+            <div class="form-group" >
                 <label >Genre</label>
-                    <select name="genre" class="form-control" ng-model="book.genre">
-                      <option value="Suspense">Suspense</option>
+                    <select name="genre" class="form-control" required ng-model="book.genre" name="BookGenre"  >
+                      <option value="Suspense" Selected>Suspense</option>
                       <option value="Diet">飲食札記</option>
                       <option value="Translation">翻譯文學</option>
                       <option value="Teaching">教學法</option>
                      <option value="Coffee">咖啡</option>
                     </select>
+                    <div ng-messages = "addBookForm.genre.$error" >
+                         <p ng-message="required">請填入Genre</p>
+
+                    </div>
+
             </div>
 
 
-            <div class="form-group">
+            <div class="form-group" ng-class="{'has-error':addBookForm.author.$touched && addBookForm.author.$invalid, 'has-success': addBookForm.author.$touched && addBookForm.author.$valid }">
                 <label >Author</label>
-                <input type="text" class="form-control" ng-model="book.author" placeholder="Enter Author">
-                <small class="text-muted">We'll never share your email with anyone else.</small>
+                <input type="text" class="form-control" name="author" ng-model="book.author" placeholder="Enter Author" ng-minlength="0" required >
+                <div ng-messages = "addBookForm.author.$error" ng-show="addBookForm.author.$dirty">
+                     <p ng-message="required">請填入author</p>
+
+                </div>
             </div>
 
 
               <div class="form-group">
                   <label >Publisher</label>
-                  <input type="text" class="form-control"  ng-model="book.publisher" placeholder="Enter Publisher">
+                  <input type="text"  name="publisher" class="form-control"  ng-model="book.publisher" placeholder="Enter Publisher" required>
+
+
               </div>
 
               <div class="form-group">
                   <label >Pages</label>
-                  <input type="text" class="form-control" ng-model="book.pages" placeholder="Enter Pages">
+                  <input type="text"   name="page"  class="form-control" ng-model="book.pages" placeholder="Enter Pages" >
+
               </div>
 
-              <div class="form-group">
+              <div class="form-group" ng-class="{'has-error': addBookForm.description.$touched && addBookForm.description.$invalid, 'has-success': addBookForm.description.$touched && addBookForm.description.$valid }">
                   <label >Description</label>
-                  <textarea class="form-control" ng-model="book.description" placeholder="Enter Description"></textarea>
+                  <textarea class="form-control" name="description" ng-minlength="0" required ng-model="book.description" placeholder="Enter Description" required ></textarea>
+                  <div ng-messages = "addBookForm.description.$error" ng-show="addBookForm.description.$dirty">
+                       <p ng-message="required">請填入description</p>
+
+                  </div>
               </div>
 
-              <div class="form-group">
+              <div class="form-group" ng-class="{'has-error': addBookForm.image_url.$touched && addBookForm.image_url.$invalid, 'has-success': addBookForm.image_url.$touched && addBookForm.image_url.$valid}">
                   <label >Image URL</label>
-                  <input type="text" class="form-control" ng-model="book.image_url" placeholder="Enter Image URL">
+                  <input type="text" required name="image_url"  ng-minlength="0"  class="form-control" ng-model="book.image_url" placeholder="Enter Image URL" >
+                  <div ng-messages = "addBookForm.image_url.$error" ng-show="addBookForm.image_url.$dirty">
+                       <p ng-message="required">請填入image_url</p>
+
+                  </div>
               </div>
 
-              <div class="form-group">
+              <div class="form-group"  ng-class="{'has-error': addBookForm.buy_url.$touched && addBookForm.buy_url.$invalid, 'has-success': addBookForm.buy_url.$touched && addBookForm.buy_url.$valid}" >
                   <label >Buy URL</label>
-                  <input type="text" class="form-control" ng-model="book.buy_url" placeholder="Enter Buy URL">
+                  <input type="text" name="buy_url"ng-minlength="0" class="form-control" ng-model="book.buy_url" placeholder="Enter Buy URL" required>
+                  <div ng-messages = "addBookForm.buy_url.$error" ng-show="addBookForm.buy_url.$dirty">
+                       <p ng-message="required">請填入buy_url</p>
+
+                  </div>
               </div>
 
 
-          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="submit" class="btn btn-primary" ng-disabled="addBookForm.$invalid">Submit</button>
       </form>
     </div>
 
